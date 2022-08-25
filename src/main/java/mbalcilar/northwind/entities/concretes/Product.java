@@ -1,5 +1,6 @@
 package mbalcilar.northwind.entities.concretes;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +20,8 @@ public class Product {
 	@Column(name="product_id")
 	private int id;
 	
-	@Column(name="category_id")
-	private int categoryId;
+	//@Column(name="category_id")  
+	//private int categoryId;
     
 	@Column(name="product_name")
 	private String productName;
@@ -34,8 +35,9 @@ public class Product {
 	@Column(name="quantity_per_unit")
 	private String quantityPerUnit;
 	
-	
-	
+	@ManyToOne()
+	@JoinColumn(name = "category_id")
+	private Category category;
 	
 	public Product() {}
 	
@@ -43,7 +45,7 @@ public class Product {
 			String quantityPerUnit) {
 		super();
 		this.id = id;
-		this.categoryId = categoryId;
+		//this.categoryId = categoryId;   
 		this.productName = productName;
 		this.unitPrice = unitPrice;
 		this.unitsInStock = unitsInStock;
@@ -59,13 +61,13 @@ public class Product {
 		this.id = id;
 	}
 
-	public int getCategoryId() {
+	/*public int getCategoryId() {  
 		return categoryId;
-	}
+	}  
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
-	}
+	}*/
 
 	public String getProductName() {
 		return productName;
