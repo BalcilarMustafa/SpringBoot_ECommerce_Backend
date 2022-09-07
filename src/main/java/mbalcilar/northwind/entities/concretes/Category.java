@@ -12,8 +12,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import mbalcilar.northwind.entities.concretes.Category;
+import mbalcilar.northwind.entities.concretes.Product;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="categories")
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "products"})
@@ -30,32 +38,5 @@ public class Category {
 	private List<Product> products;
 
 	
-	
-	public Category() {}
-
-	
-	public Category(int categoryId, String categoryName) {
-		super();
-		this.categoryId = categoryId;
-		this.categoryName = categoryName;
-	}
-	
-	
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
 	
 }

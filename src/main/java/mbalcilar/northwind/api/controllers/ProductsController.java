@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import mbalcilar.northwind.business.abstracts.ProductService;
 import mbalcilar.northwind.core.utilities.results.DataResult;
 import mbalcilar.northwind.core.utilities.results.Result;
-import mbalcilar.northwind.core.utilities.results.SuccessResult;
+import mbalcilar.northwind.core.utilities.results.SuccessDataResult;
 import mbalcilar.northwind.entities.concretes.Product;
 
 @RestController
@@ -60,6 +60,13 @@ public class ProductsController {
 	}
 	
 	
+	@GetMapping("/getByCategoryIn")
+	public DataResult<List<Product>> getByCategoryIn(List<Integer> categories) {
+		return this.productservice.getByCategoryIn(categories);
+		
+	}
+	
+	
 	
 	
 	@GetMapping("/getByProductNameContains")
@@ -75,7 +82,6 @@ public class ProductsController {
 	}
 	
 	
-
 	
 	@GetMapping("/getAllByPage")
 	public DataResult<List<Product>> getAll(int pageNo, int pageSize) {
@@ -92,6 +98,11 @@ public class ProductsController {
 	public DataResult<List<Product>> getAllSortDesc() {
 		return this.productservice.getAllSortDesc();
 	
+	}
+	
+	@GetMapping("/getByNameAndCategory")
+	public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
+		return this.productservice.getByNameAndCategory(productName, categoryId);
 	}
 	
 	

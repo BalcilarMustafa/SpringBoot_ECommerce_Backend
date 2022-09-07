@@ -19,7 +19,7 @@ public interface ProductDao extends JpaRepository<Product,Integer>{
 	// select * from products where product_name = table or category_id =2
 	
 	List<Product> getByCategoryIn(List<Integer> categories);
-	// select * from products where category_id in((1,2,3,4)
+	// select * from products where category_id in(1,2,3,4)
 	
 	List<Product> getByProductNameContains(String search);
 	
