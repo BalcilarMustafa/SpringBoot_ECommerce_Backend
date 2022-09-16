@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import mbalcilar.northwind.entities.concretes.Product;
+import mbalcilar.northwind.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductDao extends JpaRepository<Product,Integer>{
 	
@@ -29,6 +30,12 @@ public interface ProductDao extends JpaRepository<Product,Integer>{
 	List<Product> getByNameAndCategory_CategoryId(String productName, int categoryId);
 	//JPQL (Java Persistence Query Language) 
 	// select * from products where product_name = table and category_id =2
+	
+	
+	@Query("Select new mbalcilar.northwind.entities.dtos.ProductWithCategoryDto(p.id, p.productName, c.categoryName) From Category c Inner Join c.products p")
+	List<ProductWithCategoryDto> getProductWithCategoryDetails();
+	
+ //select p.productId, p.productName, c.categoryName from Category c inner join Product p on c.categoryId = p.categoryId
 	
 
 }

@@ -15,6 +15,7 @@ import mbalcilar.northwind.core.utilities.results.DataResult;
 import mbalcilar.northwind.core.utilities.results.Result;
 import mbalcilar.northwind.core.utilities.results.SuccessDataResult;
 import mbalcilar.northwind.entities.concretes.Product;
+import mbalcilar.northwind.entities.dtos.ProductWithCategoryDto;
 
 @RestController
 @RequestMapping("/api/products")
@@ -105,6 +106,11 @@ public class ProductsController {
 		return this.productservice.getByNameAndCategory(productName, categoryId);
 	}
 	
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return this.productservice.getProductWithCategoryDetails();
+	}
 	
 	
 }

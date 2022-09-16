@@ -15,6 +15,7 @@ import mbalcilar.northwind.core.utilities.results.SuccessDataResult;
 import mbalcilar.northwind.core.utilities.results.SuccessResult;
 import mbalcilar.northwind.dataAccess.abstracts.ProductDao;
 import mbalcilar.northwind.entities.concretes.Product;
+import mbalcilar.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service
 public class ProductManager implements ProductService{
@@ -109,6 +110,11 @@ public class ProductManager implements ProductService{
 		
 		return new SuccessDataResult<List<Product>>(this.productdao.findAll(sort), "Success");
 		
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productdao.getProductWithCategoryDetails(), "Data is listed");
 	}
 
 	

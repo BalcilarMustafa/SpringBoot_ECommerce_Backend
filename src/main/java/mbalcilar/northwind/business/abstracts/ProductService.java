@@ -7,6 +7,7 @@ import java.util.List;
 import mbalcilar.northwind.core.utilities.results.DataResult;
 import mbalcilar.northwind.core.utilities.results.Result;
 import mbalcilar.northwind.entities.concretes.Product;
+import mbalcilar.northwind.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductService {
 	
@@ -31,6 +32,8 @@ public interface ProductService {
 	DataResult<List<Product>> getAll(int pageNo, int pageSize);
 	DataResult<List<Product>> getAllSortAsc();
 	DataResult<List<Product>> getAllSortDesc();
+	
+	DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails();
 	
 
 }
